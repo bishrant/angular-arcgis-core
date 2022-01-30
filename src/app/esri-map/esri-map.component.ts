@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import MapView from '@arcgis/core/views/MapView';
 import Map from '@arcgis/core/Map';
+import Home from "@arcgis/core/widgets/Home";
 
 @Component({
   selector: 'app-esri-map',
