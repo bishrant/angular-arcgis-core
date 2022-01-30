@@ -6,8 +6,12 @@
 trigger:
 - main
 
+variables:
+  npm_config_cache: $(Pipeline.Workspace)/.npm
+
 pool:
   vmImage: ubuntu-latest
+
 
 steps:
 - task: NodeTool@0
@@ -15,10 +19,17 @@ steps:
     versionSpec: '14.x'
   displayName: 'Install Node.js'
 
-- script: |
-    npm install -g @angular/cli
-    npm install
-    ng build --prod
+- task: Cache@2
+  inputs:
+    key: 'npm | "$(Agent.OS)" | package-lock.json'
+    restoreKeys: |
+       npm | "$(Agent.OS)"
+    path: $(npm_config_cache)
+  displayName: Cache npm
+
+- script: npm ci --cache $(npm_config_cache)
+
+- script: npm run build
   displayName: 'npm install and build'
 
 - task: AzureStaticWebApp@0
