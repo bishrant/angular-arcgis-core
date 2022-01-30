@@ -38,16 +38,16 @@ steps:
 #     targetPath: '$(Pipeline.Workspace)'
 - task: ArchiveFiles@2
   inputs:
-    rootFolderOrFile: '$(Build.BinariesDirectory)'
+    rootFolderOrFile: 'dist'
     includeRootFolder: true
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
     
-# - task: AzureStaticWebApp@0
-#   inputs:
-#     app_location: '/'
-#     output_location: 'dist/angular-arcgis-core'
-#     skip_app_build: true
-#   env:
-#     azure_static_web_apps_api_token: $(deployment_token)
+- task: AzureStaticWebApp@0
+  inputs:
+    app_location: '/'
+    output_location: 'dist/'
+    skip_app_build: true
+  env:
+    azure_static_web_apps_api_token: $(deployment_token)
