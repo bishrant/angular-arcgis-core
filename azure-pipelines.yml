@@ -20,3 +20,9 @@ steps:
     npm install
     ng build --prod
   displayName: 'npm install and build'
+
+- task: AzureStaticWebApp@0
+  inputs:
+    app_location: '/'
+    output_location: 'dist/angular-arcgis-core'
+    skip_app_build: true
