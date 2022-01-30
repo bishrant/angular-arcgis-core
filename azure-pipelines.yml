@@ -26,3 +26,5 @@ steps:
     app_location: '/'
     output_location: 'dist/angular-arcgis-core'
     skip_app_build: true
+  env:
+    azure_static_web_apps_api_token: $(deployment_token)
