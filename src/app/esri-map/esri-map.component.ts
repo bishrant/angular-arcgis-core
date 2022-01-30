@@ -17,7 +17,7 @@ export class EsriMapComponent implements AfterViewInit {
 
    AddHomeWidget = async() => {
    let homeWidget = new Home({view:  this.mapView});
-    this.mapView.ui.add(homeWidget, "top-left");
+    this.mapView?.ui?.add(homeWidget, "top-left");
   }
     
   initMap = async () => {
