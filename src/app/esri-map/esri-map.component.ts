@@ -15,7 +15,7 @@ export class EsriMapComponent implements AfterViewInit {
   @ViewChild('mapViewNode', { static: true }) private mapViewEl: ElementRef | undefined;
   constructor() { }
 
-    const AddHomeWidget = async() => {
+   AddHomeWidget = async() => {
    let homeWidget = new Home({view:  this.mapView});
     this.mapView.ui.add(homeWidget, "top-left");
   }
