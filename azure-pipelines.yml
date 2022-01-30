@@ -32,12 +32,18 @@ steps:
 - script: npm run build
   displayName: 'npm install and build'
 
-- task: DownloadBuildArtifacts@1
+# - task: DownloadPipelineArtifact@2
+#   inputs:
+#     buildType: 'current'
+#     targetPath: '$(Pipeline.Workspace)'
+- task: ArchiveFiles@2
   inputs:
-    buildType: 'current'
-    downloadType: 'single'
-    artifactName: 't'
-    downloadPath: '$(System.ArtifactsDirectory)'
+    rootFolderOrFile: '$(Build.BinariesDirectory)'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
+    
 # - task: AzureStaticWebApp@0
 #   inputs:
 #     app_location: '/'
