@@ -32,10 +32,16 @@ steps:
 - script: npm run build
   displayName: 'npm install and build'
 
-- task: AzureStaticWebApp@0
+- task: DownloadBuildArtifacts@1
   inputs:
-    app_location: '/'
-    output_location: 'dist/angular-arcgis-core'
-    skip_app_build: true
-  env:
-    azure_static_web_apps_api_token: $(deployment_token)
+    buildType: 'current'
+    downloadType: 'single'
+    artifactName: 't'
+    downloadPath: '$(System.ArtifactsDirectory)'
+# - task: AzureStaticWebApp@0
+#   inputs:
+#     app_location: '/'
+#     output_location: 'dist/angular-arcgis-core'
+#     skip_app_build: true
+#   env:
+#     azure_static_web_apps_api_token: $(deployment_token)
