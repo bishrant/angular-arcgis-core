@@ -14,7 +14,11 @@ export class EsriMapComponent implements AfterViewInit {
   @ViewChild('mapViewNode', { static: true }) private mapViewEl: ElementRef | undefined;
   constructor() { }
 
-  
+    const AddHomeWidget = async() => {
+   let homeWidget = new Home({view:  this.mapView});
+    this.mapView.ui.add(homeWidget, "top-left");
+  }
+    
   initMap = async () => {
     this.esriMap = new Map({
       basemap: 'streets'
@@ -29,7 +33,10 @@ export class EsriMapComponent implements AfterViewInit {
     this.mapView = new MapView(mapViewProperties);
 
     await this.mapView.when(); 
+    await this.AddHomeWidget();
   }
+  
+
 
   ngAfterViewInit(): void {
     this.initMap();
