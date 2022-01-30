@@ -45,7 +45,7 @@ steps:
     replaceExistingArchive: true
 - task: AzureStaticWebApp@0
   inputs:
-    output_location: 'dist/angular-arcgis-core'
+    output_location: '$(System.DefaultWorkingDirectory)/dist/angular-arcgis-core/'
     skip_app_build: true
     verbose: true
   env:
